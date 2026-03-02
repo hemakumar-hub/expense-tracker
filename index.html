@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Expense Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Expense Tracker</h1>
+      <p class="tag">Track spending, manage budgets, and stay on top of your money.</p>
+    </div>
+  </header>
+  <main class="container main-grid">
+    <section class="panel form-panel">
+      <h2>Add an expense</h2>
+      <form id="expense-form" class="expense-form">
+        <div class="row">
+          <label>Title <input type="text" id="title" placeholder="Coffee, Rent, Groceries" required></label>
+          <label>Amount <input type="number" id="amount" placeholder="12.50" step="0.01" min="0.01" required></label>
+        </div>
+        <div class="row">
+          <label>Category
+            <select id="category">
+              <option>Food</option>
+              <option>Transport</option>
+              <option>Shopping</option>
+              <option>Health</option>
+              <option>Rent</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label>Date <input type="date" id="date" required></label>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Add Expense</button>
+          <button type="button" id="reset-btn" class="btn">Reset</button>
+        </div>
+      </form>
+      <div class="filters">
+        <label>Filter by month: <input type="month" id="filter-month"></label>
+        <button id="clear-filter" class="btn small">Clear</button>
+      </div>
+    </section>
+
+    <section class="panel list-panel">
+      <h2>Expenses</h2>
+      <ul id="expense-list" class="expense-list" aria-live="polite"></ul>
+      <div class="totals">
+        <div>Total: <span id="total">$0.00</span></div>
+        <div>Monthly: <span id="monthly">$0.00</span></div>
+      </div>
+    </section>
+
+    <section class="panel chart-panel">
+      <h2>Spending by Category</h2>
+      <canvas id="category-chart" height="220"></canvas>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">Made with care • Local-only storage • Responsive</div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
